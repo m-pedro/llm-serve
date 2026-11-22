@@ -1,6 +1,6 @@
 # llm-serve
 
-A vLLM / SGLang-style High-Throughput LLM Inference Serving Engine built from scratch in Python and PyTorch. Implements **PagedAttention** non-contiguous KV-block allocation, Copy-on-Write (`CoW`), Automatic Prefix Caching (`APC`), iteration-level Continuous Batching with block preemption, Chunked Prefill, and Speculative Decoding.
+A vLLM / SGLang-style High-Throughput LLM Inference Serving Engine built from scratch in Python and PyTorch. Implements PagedAttention** non-contiguous KV-block allocation, Copy-on-Write (`CoW`), Automatic Prefix Caching (`APC`), iteration-level Continuous Batching with block preemption, Chunked Prefill, and Speculative Decoding.
 
 ## 15-Day Incremental Engineering Roadmap (Month 5, Days 136–150)
 

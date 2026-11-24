@@ -1,5 +1,7 @@
 from llm_serve.allocator import BlockAllocator, OutOfKVBlocksError, PhysicalKVBlock
 from llm_serve.config import EngineConfig
+from llm_serve.engine import LLMEngine
+from llm_serve.metrics import ServingMetricsReport, summarize_engine_metrics
 from llm_serve.model import PagedTransformer
 from llm_serve.page_table import BlockTableManager, PhysicalSlot
 from llm_serve.paged_attn import PagedKVCacheArena, paged_attention_forward
@@ -23,6 +25,7 @@ __all__ = [
     "ContinuousBatchScheduler",
     "EngineConfig",
     "HeterogeneousSampler",
+    "LLMEngine",
     "OutOfKVBlocksError",
     "PagedKVCacheArena",
     "PagedTransformer",
@@ -35,9 +38,11 @@ __all__ = [
     "SchedulerStepOutput",
     "SequenceRequest",
     "SequenceStatus",
+    "ServingMetricsReport",
     "SpeculativeStats",
     "compute_chained_block_hash",
     "paged_attention_forward",
     "sample_single_logits",
     "speculative_generate",
+    "summarize_engine_metrics",
 ]

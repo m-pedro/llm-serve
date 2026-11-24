@@ -1,6 +1,6 @@
 # llm-serve
 
-A vLLM / SGLang-style high-throughput LLM inference serving engine built from scratch in Python and PyTorch. Implements PagedAttention non-contiguous KV-block management, Copy-on-Write (`CoW`) sequence forking, Automatic Prefix Caching (`APC`) with chained Blake2b hashing and LRU eviction, iteration-level Continuous Batching with block preemption, Chunked Prefill, and Speculative Decoding with exact rejection sampling.
+A vLLM / SGLang-style high-throughput LLM inference serving engine built from scratch in Python and PyTorch. Implements PagedAttention non-contiguous KV-block management, Copy-on-Write (`CoW`) sequence forking, Automatic Prefix Caching (APC) with chained Blake2b hashing and LRU eviction, iteration-level Continuous Batching with block preemption, Chunked Prefill, and Speculative Decoding with exact rejection sampling.
 
 ---
 
@@ -98,11 +98,11 @@ Evaluated across `12` skewed-length requests (mixing short `4–6` token answers
 | Scheduler Mode | Total Engine Steps | Throughput (Tokens / Step) | Active Batch Slot Utilization | Relative Throughput |
 | :--- | ---: | ---: | ---: | :--- |
 | **Static Batching (`B = 4`)** | 90 steps | 1.49 tok/step | 37.2% (62.8% idle padding) | 1.00x (Baseline) |
-| **Continuous Batching + `PagedAttention`** | **43 steps** | **3.12 tok/step** | **77.9%** | **2.09x higher throughput** |
+| **Continuous Batching + `PagedAttention`** | 43 steps | 3.12 tok/step | 77.9% | 2.09x higher throughput |
 
 ### 2. Automatic Prefix Caching (`python3 -m llm_serve.cli bench-prefix`)
 
-- **8 requests sharing a 64-token system/RAG prefix:** After Request 1 warms the cache, APC reuses all `8` full KV blocks across requests 2 through 8 (`98.2%` block cache hit rate), cutting computed prefill tokens from `528` down to **`80` (`84.8%` prefill compute saved)**.
+- **8 requests sharing a 64-token system/RAG prefix:** After Request 1 warms the cache, APC reuses all `8` full KV blocks across requests 2 through 8 (`98.2%` block cache hit rate), cutting computed prefill tokens from `528` down to `80` (`84.8%` prefill compute saved).
 
 ---
 

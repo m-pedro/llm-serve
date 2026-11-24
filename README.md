@@ -102,7 +102,7 @@ Evaluated across `12` skewed-length requests (mixing short `4–6` token answers
 
 ### 2. Automatic Prefix Caching (`python3 -m llm_serve.cli bench-prefix`)
 
-- **8 requests sharing a 64-token system/RAG prefix:** APC reuses all `8` full KV blocks across requests `2..8` (`87.5%` block cache hit rate), cutting computed prefill tokens from `528` down to **`80` (`84.8%` prefill compute saved)**.
+- **8 requests sharing a 64-token system/RAG prefix:** After Request 1 warms the cache, APC reuses all `8` full KV blocks across requests 2 through 8 (`98.2%` block cache hit rate), cutting computed prefill tokens from `528` down to **`80` (`84.8%` prefill compute saved)**.
 
 ---
 
